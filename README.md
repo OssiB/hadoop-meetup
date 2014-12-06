@@ -3,7 +3,7 @@ hadoop-meetup
 
 ### Installation
 
-Download [VirtualBox]  and [single-Node Hadoop Cluster].
+Download [VirtualBox]  and [single-Node Hadoop Cluster] and open downloaded Cloudera virtualbox file.
 
 ```sh
 $ git clone https://github.com/OssiB/hadoop-meetup.git
