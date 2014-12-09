@@ -1,5 +1,8 @@
 package hadoop.meetup.first;
 
+import static org.junit.Assert.*;
+import hadoop.meetup.first.StateReputationMapper.Reputation;
+
 import java.io.IOException;
 
 import org.apache.hadoop.io.IntWritable;
@@ -28,11 +31,15 @@ public class StateReputationMapperTest {
 		Text value = new Text("\"2568338\",\"Bangalore, INDIA\",\"1\",\"2241161\",\"1.5065717032246788\"");
 		mapDriver.withInput(new LongWritable(),value);
 		mapDriver.runTest();
+		assertEquals("Expected 1 counter increment", 1, mapDriver.getCounters()
+	              .findCounter(Reputation.NOT_IN_STATES).getValue());
 	}
 	@Test
 	public void ignoreHeader() throws IOException{
 		Text value = new Text("Id,Location,Reputation,Ranking,Percentile");
 		mapDriver.withInput(new LongWritable(), value);
 		mapDriver.runTest();
+		assertEquals("Expected 1 counter increment", 1, mapDriver.getCounters()
+	              .findCounter(Reputation.HEADER).getValue());
 	}
 }
