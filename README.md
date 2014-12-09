@@ -21,7 +21,7 @@ Or you can use *curl*
 ```sh
 $ curl  http://data.stackexchange.com/stackoverflow/csv/325342?state={AZ,TX,IN,CA....} -o "states.csv" -s -S -f
 ```
-### Move data to HDFS
+### Move data to HDFS 
 ```sh
 $ hadoop fs -mkdir user/cloudera/input
 $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
@@ -29,6 +29,16 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
 [Virtualbox]:https://www.virtualbox.org/wiki/Downloads
 
+
+
+### How to run MapReduce program in Eclipse
+
+#### MapReduce testing with MRUnit
+
+#### MapReduceDriver 
+
+
+### Oozie workflow
 
 
 
