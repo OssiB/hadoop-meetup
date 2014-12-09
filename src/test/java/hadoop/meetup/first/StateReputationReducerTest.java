@@ -14,7 +14,7 @@ public class StateReputationReducerTest {
 	@Before
 	public void setUp(){
 		StateReputationReducer reducer = new StateReputationReducer();
-	    reduceDriver = ReduceDriver.newReduceDriver(reducer);
+		reduceDriver = ReduceDriver.newReduceDriver(reducer);
 	}
 	@Test
 	public void testSumReputation() throws IOException{
