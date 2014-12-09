@@ -16,7 +16,10 @@ public class StateReputationMapper extends
 	@Override
 	protected void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
-		List<String> states = Arrays.asList("AZ","FL","CA","IL","IN","MD","MA","GA","MI","MO","NC","NJ","NY","OH","PA","TN","TX","VA","WA","WI");
+		List<String> states = Arrays.asList("AZ","FL","CA","IL","IN",
+				                            "MD","MA","GA","MI","MO","NC",
+				                            "NJ","NY","OH","PA","TN","TX",
+				                            "VA","WA","WI");
 
 	}
 }
