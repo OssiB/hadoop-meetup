@@ -47,9 +47,9 @@ protected void map(LongWritable key, Text value, Context context)
 ```
 so that ```StatepReputationMapperTest``` class tests will pass. 
 
-| First Header  | Second Header |
+| Input line  | Output key |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
+| "251665","Chicago, IL","1464","50153","0.0337142626664605"  | Content Cell  |
 | Content Cell  | Content Cell  |
 
 #### MapReduceDriver 
