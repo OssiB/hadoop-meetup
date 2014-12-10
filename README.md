@@ -50,6 +50,7 @@ so that ```StatepReputationMapperTest``` class tests will pass.
 | Input line  | Output key |Output value|
 | ------------- | ------------- |-------|
 | "251665","Chicago, IL","1464","50153","0.0337142626664605"  | CA  |1464|
+|Id,Location,Reputation,Ranking,Percentile|-|-|
 
 
 #### MapReduceDriver 
