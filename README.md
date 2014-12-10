@@ -8,7 +8,7 @@ Download [VirtualBox]  and [single-Node Hadoop Cluster] and open the downloaded 
 
 
 ### Download data for Hadoop
-If you have R installed on your machine you can run the script top.R. As a result you will have 20 cvs file  CA.csv, AZ,... Join files 
+If you have R installed on your machine you can run the script top.R inside ```/src/main/scripts``` . As a result you will have 20 cvs file  CA.csv, AZ,... Join files 
 ```sh
 $ awk 'FNR>1' *.csv > states.csv
 ```
@@ -36,7 +36,7 @@ $ mvn eclipse:eclipse
 ```
 Import generated eclipse project into your Eclipse workspace.
 #### MapReduce testing with MRUnit
-Inside <code>/src/test/hadoop/meetup/first</code> there are test classes :
+Inside <code>/src/test/hadoop/meetup/first</code> directory there are test classes :
 ```java
 StateReputationMapperTest
 StateReputationReducerTest
