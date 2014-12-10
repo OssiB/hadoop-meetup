@@ -40,7 +40,6 @@ Inside <code>/src/test/hadoop/meetup/first</code> there are three test classes :
 ```java
 StateReputationMapperTest
 StateReputationReducerTest
-StateReputationDriverTest
 ```
 If you run the tests, they should fail.  
 
