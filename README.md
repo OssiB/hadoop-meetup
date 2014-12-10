@@ -46,9 +46,9 @@ If you run the tests, they should fail. Try to implement ```StateReputationMappe
 protected void map(LongWritable key, Text value, Context context)
 ```
 so that ```StatepReputationMapperTest``` class tests will pass. 
-Input line  | Output key|Outputvalue
-------------- | -------------
-"16287","Chicago, IL","25593","1998","0.0013431120133907"  |IL|25593
+Input line                                                 | Output key|Outputvalue
+------------- | -------------------------------------------------------------------
+"16287","Chicago, IL","25593","1998","0.0013431120133907"  |IL         |25593
 
 #### MapReduceDriver 
 
