@@ -51,6 +51,7 @@ so that ```StatepReputationMapperTest``` class tests will pass.
 | ------------- | ------------- |-------|
 | "251665","Chicago, IL","1464","50153","0.0337142626664605"  | CA  |1464|
 |Id,Location,Reputation,Ranking,Percentile|-|-|
+|"2189688","POLLACHI,COIMBATORE,TAMIL NADU,INDIA","101","323293","0.217|-|
 
 
 #### MapReduceDriver 
