@@ -32,8 +32,14 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 
 
 ### How to run MapReduce program in Eclipse
-
 #### MapReduce testing with MRUnit
+Inside <code>/src/test/hadoop/meetup/first</code> there are three test classes :
+```java
+StateReputationMapperTest
+StateReputationReducerTest
+StateReputationDriverTest
+```
+
 
 #### MapReduceDriver 
 
