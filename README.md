@@ -5,7 +5,7 @@ hadoop-meetup
 
 Download [VirtualBox]  and [single-Node Hadoop Cluster] and open the downloaded Cloudera virtualbox file.
 
-Import generated eclipse project into your Eclipse workspace.
+
 
 ### Download data for Hadoop
 If you have R installed on your machine you can run the script top.R. As a result you will have 20 cvs file  CA.csv, AZ,... Join files 
@@ -42,7 +42,8 @@ StateReputationMapperTest
 StateReputationReducerTest
 StateReputationDriverTest
 ```
-Run the tests and all the tests should fail.
+If you run the tests, they should fail.  
+
 
 #### MapReduceDriver 
 
