@@ -36,7 +36,7 @@ $ mvn eclipse:eclipse
 ```
 Import generated eclipse project into your Eclipse workspace.
 #### MapReduce testing with MRUnit
-Inside <code>/src/test/hadoop/meetup/first</code> there are three test classes :
+Inside <code>/src/test/hadoop/meetup/first</code> there are test classes :
 ```java
 StateReputationMapperTest
 StateReputationReducerTest
