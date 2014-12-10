@@ -47,10 +47,10 @@ protected void map(LongWritable key, Text value, Context context)
 ```
 so that ```StatepReputationMapperTest``` class tests will pass. 
 
-| Input line  | Output key |Output value|Header counter|Not in states counter
-| ------------- | ------------- |-------|
+| Input line  | Output key |Output value|Header counter|Not in states counter|
+| ------------- | ------------- |-------|-----------|---------------------|
 | "251665","Chicago, IL","1464","50153","0.0337142626664605"  | IL  |1464|-|
-|Id,Location,Reputation,Ranking,Percentile|-|-|+1|-
+|Id,Location,Reputation,Ranking,Percentile|-|-|+1|-|
 |"2189688","POLLACHI,COIMBATORE,TAMIL NADU,INDIA","101","323293","0.217|-|-|+1| 
 
 
