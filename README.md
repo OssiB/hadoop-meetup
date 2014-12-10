@@ -39,7 +39,7 @@ StateReputationMapperTest
 StateReputationReducerTest
 StateReputationDriverTest
 ```
-
+Run the tests and all the tests should fail.
 
 #### MapReduceDriver 
 
