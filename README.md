@@ -14,7 +14,7 @@ $ awk 'FNR>1' *.csv > states.csv
 ```
 Or you can use *curl*
 ```sh
-$ curl  http://data.stackexchange.com/stackoverflow/csv/325342?state={AZ,TX,IN,CA....} -o "states.csv" -s -S -f
+$ curl  http://data.stackexchange.com/stackoverflow/csv/329607?state={AZ,TX,IN,CA....} -o "states.csv" -s -S -f
 ```
 ### Move data to HDFS 
 ```sh
