@@ -41,7 +41,7 @@ Inside <code>/src/test/hadoop/meetup/first</code> directory there are test class
 StateReputationMapperTest
 StateReputationReducerTest
 ```
-If you run the tests, they should fail. Try to implement ```StateReputationMapper``` method
+If you run the tests, they should fail. Try to implement   method for the class ```StateReputationMapper```
 ```java
 protected void map(LongWritable key, Text value, Context context)
 ```
