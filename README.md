@@ -45,9 +45,7 @@ If you run the tests, they should fail. Try to implement   method
 ```java
 protected void map(LongWritable key, Text value, Context context)
 ```
-for the class ```StateReputationMapper```
-
-so that ```StatepReputationMapperTest``` class tests will pass. 
+for the class ```StateReputationMapper``` so that ```StatepReputationMapperTest``` class tests will pass. 
 
 | Input line  | Output key |Output value|Header counter|Not in states counter|
 | ------------- | ------------- |-------|-----------|---------------------|
