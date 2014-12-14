@@ -1,0 +1,53 @@
+<workflow-app xmlns="uri:oozie:workflow:0.1" name="state-rep-workflow">
+	<start to="state-rep-mr" />
+	<action name="state-rep-mr">
+		<map-reduce>
+			<job-tracker>${jobTracker}</job-tracker>
+			<name-node>${nameNode}</name-node>
+			<prepare>
+				<delete path="${nameNode}/user/${wf:user()}/wfoutput" />
+			</prepare>
+			<configuration>
+				<property>
+					<name>mapred.mapper.new-api</name>
+					<value>true</value>
+				</property>
+				<property>
+					<name>mapred.reducer.new-api</name>
+					<value>true</value>
+				</property>
+				<property>
+					<name>mapreduce.map.class</name>
+					<value>hadoop.meetup.first.StateReputationMapper</value>
+				</property>
+				<property>
+					<name>mapreduce.reduce.class</name>
+					<value>hadoop.meetup.first.StateReputationReducer</value>
+				</property>
+				<property>
+					<name>mapreduce.job.output.key.class</name>
+					<value>org.apache.hadoop.io.Text</value>
+				</property>
+				<property>
+					<name>mapreduce.job.output.value.class</name>
+					<value>org.apache.hadoop.io.IntWritable</value>
+				</property>
+				<property>
+					<name>mapred.input.dir</name>
+					<value>/user/${wf:user()}/input/</value>
+				</property>
+				<property>
+					<name>mapred.output.dir</name>
+					<value>/user/${wf:user()}/wfoutput</value>
+				</property>
+			</configuration>
+		</map-reduce>
+		<ok to="end" />
+		<error to="fail" />
+	</action>
+	<kill name="fail">
+		<message>MapReduce failed, error
+			message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+	</kill>
+	<end name="end" />
+</workflow-app>
