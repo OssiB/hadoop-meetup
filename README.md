@@ -8,6 +8,8 @@ Download [VirtualBox]  and [single-Node Hadoop Cluster] and open the downloaded 
 
 
 ### Download data for Hadoop
+The data we will use is a query result from the [StackExchange Data Explorer]. If you run [query] with parameter CA
+
 If you have R installed on your machine you can run the script top.R inside ```/src/main/scripts``` . As a result you will have 20 cvs file  CA.csv, AZ,... Join files 
 ```sh
 $ awk 'FNR>1' *.csv > states.csv
@@ -23,7 +25,8 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 ```
 [single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
 [Virtualbox]:https://www.virtualbox.org/wiki/Downloads
-
+[StackExchange Data Explorer]:http://data.stackexchange.com/
+[query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
 
 
 ### How to run MapReduce program in Eclipse
