@@ -26,10 +26,6 @@ $ curl  http://data.stackexchange.com/stackoverflow/csv/329607?state={AZ,TX,IN,C
 $ hadoop fs -mkdir user/cloudera/input
 $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 ```
-### Move data to HDFS using java program
-
-
-
 [single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
 [Virtualbox]:https://www.virtualbox.org/wiki/Downloads
 [StackExchange Data Explorer]:http://data.stackexchange.com/
@@ -68,7 +64,9 @@ for the class ```StateReputationMapper``` so that ```StatepReputationMapperTest`
 #### MapReduceDriver 
 
 
+
 ### Oozie workflow
+
 
 
 
