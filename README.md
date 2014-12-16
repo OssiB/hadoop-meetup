@@ -28,11 +28,11 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 ### Move data to HDFS using java programmm
 Run programm ````java GetData``` with parameters ```output,http://data.stackexchange.com/stackoverflow/csv/329607?state```,
 ```AZ,FL,CA,IL,IN,MD,MA,GA,MI,MO,NC,NJ,NY,OH,PA,TN,TX,VA,WA,WI```
+
 [single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
 [Virtualbox]:https://www.virtualbox.org/wiki/Downloads
 [StackExchange Data Explorer]:http://data.stackexchange.com/
 [Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
-
 [query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
 
 
