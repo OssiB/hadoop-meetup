@@ -8,7 +8,8 @@ Download [VirtualBox]  and [single-Node Hadoop Cluster] and open the downloaded 
 
 
 ### Download data for Hadoop
-The data we will use is a query result from the [StackExchange Data Explorer]. If you run [query] with parameter CA
+The data we will use is a query result from the [StackExchange Data Explorer]. If you run the [query] with parameter CA
+you will get about 18 000 lines as result set. Inside the result page there is a link  [Download CSV], which we will use in fetching actual data.
 
 If you have R installed on your machine you can run the script top.R inside ```/src/main/scripts``` . As a result you will have 20 cvs file  CA.csv, AZ,... Join files 
 ```sh
@@ -26,6 +27,8 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
 [Virtualbox]:https://www.virtualbox.org/wiki/Downloads
 [StackExchange Data Explorer]:http://data.stackexchange.com/
+[Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
+
 [query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
 
 
