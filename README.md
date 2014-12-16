@@ -12,7 +12,7 @@ If you have R installed on your machine you can run the script top.R inside ```/
 ```sh
 $ awk 'FNR>1' *.csv > states.csv
 ```
-Or you can use *curl*
+Or you can use ```curl```
 ```sh
 $ curl  http://data.stackexchange.com/stackoverflow/csv/329607?state={AZ,TX,IN,CA....} -o "states.csv" -s -S -f
 ```
