@@ -119,14 +119,20 @@ This directory structure should be deployed to HDFS.
 % hadoop fs -put state-rep-workflow state-rep-workflow
 ```
 Run from the terminal
-```
+```sh
 export OOZIE_URL="http://localhost:11000/oozie
 ```
 and start Oozie job
 ```sh
 oozie job  -config state-rep-workflow/state_workflow.properties -run
 ```
-Open the browser and choose Oozie application and you should see Oozie job running.
+Open the browser and choose Oozie application. You should see Oozie job running.
+If  job shows SUCCESS status check job output with command
+```sh
+$ hadoop fs -cat wfoutput/part_*
+```
+Congratulations.
+
 
 
 
