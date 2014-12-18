@@ -8,6 +8,7 @@ Download [VirtualBox]  and [single-Node Hadoop Cluster] and open the downloaded 
 
 
 ### Download data for Hadoop
+Note. You can also download the data running ```GetData``` program.
 The data we will use is a query result from the [StackExchange Data Explorer]. If you run the [query] with parameter CA
 you will get about 18 000 lines as result set. Inside the result page there is a link  [Download CSV], which we will use in fetching actual data.
 
@@ -21,7 +22,6 @@ $ curl  http://data.stackexchange.com/stackoverflow/csv/329607?state={AZ,TX,IN,C
 ```
 
 ### Move data to HDFS using CLI
-
 ```sh
 $ hadoop fs -mkdir user/cloudera/input
 $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
@@ -63,7 +63,16 @@ for the class ```StateReputationMapper``` so that ```StatepReputationMapperTest`
 
 #### MapReduceDriver 
 
-
+Inside Eclipse run the program ```GetData```with parameters 
+```
+input http://data.stackexchange.com/stackoverflow/csv/329607?state=  TX,CA
+```
+Press F5 and you should  see files TX.csv,CA.csv  under ``ìnput``` directory.
+Running  program ```MinimalMapReduceDriver``` shows what happens when you run MapReduce without
+setting mapper or reduce. Try to run programm with parameters
+```
+input output
+````
 
 ### Oozie workflow
 
