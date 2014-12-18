@@ -106,11 +106,12 @@ has excatly same functionality as ```StateReputationDriver``. An Oozie workflow 
 * Pig scripts
 
 It should have following diretory structure
-
+```dir
 state-rep-mr/
 |---lib/
 |   |----hadoop-meetup-1.0.jar
 |---workflow.xml
+```
 
 
 
