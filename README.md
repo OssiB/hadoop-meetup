@@ -107,7 +107,7 @@ has excatly same functionality as ```StateReputationDriver``. An Oozie workflow 
 
 It should have the following diretory structure
 ```dir
-state-rep-mr/
+state-rep-workflow/
 |---lib/
 |   |----hadoop-meetup-1.0.jar
 |---workflow.xml
