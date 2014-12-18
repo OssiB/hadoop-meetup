@@ -93,7 +93,26 @@ and run program. Output directory should contain files
 ```
 part-m-0001,part-m-0002
 ```
+If you have succesfully run the tests you may try to run 
+```
+
+```
 ### Oozie workflow
+Is is possible to run dependent jobs using Oozie workflow. Workflow definitions are written in XML using 
+Hadoop Process Definition Language. Workflow file ```src\main\resources\state-rep-mr\workflow.xml```
+has excatly same functionality as ```StateReputationDriver``. An Oozie workflow application is made up
+* workflow definition file
+* jar files
+* Pig scripts
+
+It should have following diretory structure
+
+state-rep-mr/
+|---lib/
+|   |----hadoop-meetup-1.0.jar
+|---workflow.xml
+
+
 
 
 
