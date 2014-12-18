@@ -89,9 +89,9 @@ Run program again and notice that keys are removed.Add line
 ```java
 job.setNumReduceTasks(0);
 ```
-and run program. Output directory should contain file 
+and run program. Output directory should contain files 
 ```
-part-m-0000
+part-m-0001,part-m-0002
 ```
 ### Oozie workflow
 
