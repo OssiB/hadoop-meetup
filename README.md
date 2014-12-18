@@ -120,7 +120,7 @@ This directory structure should be deployed to HDFS.
 ```
 Run from the terminal
 ```sh
-export OOZIE_URL="http://localhost:11000/oozie
+export OOZIE_URL="http://localhost:11000/oozie"
 ```
 and start Oozie job
 ```sh
