@@ -73,7 +73,14 @@ setting mapper or reduce. Try to run programm with parameters
 ```
 input output
 ```
-
+Open tfile ```part-r-00000``` It should start with lines
+```
+0	Id,Location,Reputation,Ranking,Percentile
+0	Id,Location,Reputation,Ranking,Percentile
+43	"120163","Austin, TX","52616","673","0.0004471680574501"
+43	"76337","Phoenix, AZ, USA","122527","175","0.0001162769837351"
+101	"4926","Austin, TX","38394","1097","0.0007288905780427"
+```
 ### Oozie workflow
 
 
