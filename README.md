@@ -105,7 +105,7 @@ has excatly same functionality as ```StateReputationDriver``. An Oozie workflow 
 * jar files
 * Pig scripts
 
-It should have following diretory structure
+It should have the following diretory structure
 ```dir
 state-rep-mr/
 |---lib/
@@ -114,7 +114,10 @@ state-rep-mr/
 ```
 
 
-
+This directory structure should be deployed to HDFS.
+```sh
+% hadoop fs -put state-rep-mr state-rep-mr
+```
 
 
 
