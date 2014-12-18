@@ -73,7 +73,7 @@ setting mapper or reduce. Try to run programm with parameters
 ```
 input output
 ```
-Open tfile ```part-r-00000``` It should start with lines
+Open file ```part-r-00000```. It should start with lines:
 ```
 0	Id,Location,Reputation,Ranking,Percentile
 0	Id,Location,Reputation,Ranking,Percentile
