@@ -72,7 +72,7 @@ Running  program ```MinimalMapReduceDriver``` shows what happens when you run Ma
 setting mapper or reduce. Try to run programm with parameters
 ```
 input output
-````
+```
 
 ### Oozie workflow
 
