@@ -67,7 +67,7 @@ Inside Eclipse run the program ```GetData```with parameters
 ```
 input http://data.stackexchange.com/stackoverflow/csv/329607?state=  TX,CA
 ```
-Press F5 and you should  see files TX.csv,CA.csv  under ``ìnput``` directory.
+Press F5 and you should  see files TX.csv,CA.csv  under ```input``` directory.
 Running  program ```MinimalMapReduceDriver``` shows what happens when you run MapReduce without
 setting mapper or reduce. Try to run programm with parameters
 ```
