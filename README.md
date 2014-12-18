@@ -98,8 +98,8 @@ If you have succesfully run the tests you may try to run
 
 ```
 ### Oozie workflow
-Is is possible to run dependent jobs using Oozie workflow. Workflow definitions are written in XML using 
-Hadoop Process Definition Language. Workflow file ```src\main\resources\state-rep-mr\workflow.xml```
+It is possible to run dependent jobs using Oozie workflow. Workflow definitions are written in XML using 
+Hadoop Process Definition Language. Workflow file ```src\main\resources\state-rep-workflow\workflow.xml```
 has excatly same functionality as ```StateReputationDriver``. An Oozie workflow application is made up
 * workflow definition file
 * jar files
@@ -116,10 +116,17 @@ state-rep-mr/
 
 This directory structure should be deployed to HDFS.
 ```sh
-% hadoop fs -put state-rep-mr state-rep-mr
+% hadoop fs -put state-rep-workflow state-rep-workflow
 ```
-
-
+Run from the terminal
+```
+export OOZIE_URL="http://localhost:11000/oozie
+```
+and start Oozie job
+```sh
+oozie job  -config state-rep-workflow/state_workflow.properties -run
+```
+Open the browser and choose Oozie application and you should see Oozie job running.
 
 
 
