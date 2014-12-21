@@ -6,11 +6,10 @@ public class StackExchangeRecord {
 	private boolean isHeader = false;
 
 	public StackExchangeRecord(String line) {
-		String[] lineSplitted = line.toString().split("\",");
+		String[] lineSplitted = line.toString().split(";");
 		if (lineSplitted.length > 1) {
-			String location = lineSplitted[1].toUpperCase()
-					.replaceAll("\"", "");
-			reputation = lineSplitted[2].replaceAll("\"", "");
+			String location = lineSplitted[1].toUpperCase();
+			reputation = lineSplitted[2];
 			state = "";
 			if (location.indexOf(',') != -1) {
 				state = location.split(",")[1].trim();
@@ -32,5 +31,5 @@ public class StackExchangeRecord {
 	public boolean isHeader() {
 		return isHeader;
 	}
-	public 
+	
 }
