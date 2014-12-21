@@ -14,6 +14,10 @@ public class StateReputationReducer extends
 			Context context)
 			throws IOException, InterruptedException {
 		int sum=0;
+		for(IntWritable reputation:reputations){
+			sum+=reputation.get();
+		}
+		context.write(state,new IntWritable(sum));
 
 	}
 
