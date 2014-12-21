@@ -2,6 +2,7 @@ package hadoop.meetup.first;
 
 
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -20,13 +21,15 @@ public class StateReputationDriver extends Configured implements Tool {
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
 		}
-		Job job = new Job(getConf(),"Sum reputation");
-		job.setJarByClass(getClass());
 		
+		Configuration conf = new Configuration();
+	    Job job = Job.getInstance(conf, "Sum reputation");
+	    
 		FileInputFormat.addInputPath(job,new Path(args[0]));
 		FileOutputFormat.setOutputPath(job,new Path(args[1]));
 		
 		job.setMapperClass(StateReputationMapper.class);
+		job.setCombinerClass(StateReputationReducer.class);
 		job.setReducerClass(StateReputationReducer.class);
 		
 		job.setOutputKeyClass(Text.class);
