@@ -1,9 +1,8 @@
 package hadoop.meetup.first;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -19,8 +18,8 @@ public class MinimalMapReduceDriver extends Configured implements Tool {
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
 		}
-		Job job = new Job(getConf(),"Minimal mapreduce");
-		job.setJarByClass(getClass());
+		Configuration conf = new Configuration();
+	    Job job = Job.getInstance(conf, "Minimal  MapReduce");
 		
 		FileInputFormat.addInputPath(job,new Path(args[0]));
 		FileOutputFormat.setOutputPath(job,new Path(args[1]));
