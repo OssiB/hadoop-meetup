@@ -21,14 +21,14 @@ public class StateReputationMapperTest {
 	}
 	@Test
 	public void processValidRecord() throws IOException{
-		Text value = new Text("\"127320\",\"Cumming, GA\",\"38230\",\"1089\",\"0.0007320565478391\"");
+		Text value = new Text("127320;Cumming, GA;38230;1089;0.0007320565478391");
 		mapDriver.withInput(new LongWritable(),value);
 		mapDriver.withOutput(new Text("GA"),new  IntWritable(38230));
 		mapDriver.runTest();
 	}
 	@Test 
 	public void ignoreWrongRecord() throws IOException{
-		Text value = new Text("\"2568338\",\"Bangalore, INDIA\",\"1\",\"2241161\",\"1.5065717032246788\"");
+		Text value = new Text("2568338;Bangalore, INDIA;1;2241161;1.5065717032246788");
 		mapDriver.withInput(new LongWritable(),value);
 		mapDriver.runTest();
 		assertEquals("Expected 1 counter increment", 1, mapDriver.getCounters()
