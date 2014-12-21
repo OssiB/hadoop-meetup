@@ -29,7 +29,7 @@ public class StackExchangeFilterDriver extends Configured implements Tool {
 		
 		job.setMapperClass(FilterMapper.class);
 		//job.setNumReduceTasks(0);
-		
+		job.setNumReduceTasks(0);
 		job.setOutputKeyClass(NullWritable.class);
 		job.setOutputValueClass(Text.class);
 		
