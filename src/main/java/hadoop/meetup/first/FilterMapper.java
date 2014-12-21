@@ -23,7 +23,7 @@ public class FilterMapper extends
 		String line = value.toString();
 		StackExchangeRecord reader = new StackExchangeRecord(line);
 		if(states.contains(reader.getState())){
-		 context.write(NullWritable.get(),new Text(value.toString()+",\""+reader.getState()+"\""));
+		 context.write(NullWritable.get(),new Text(value.toString()+";"+reader.getState()));
 		}
 	}
 	
