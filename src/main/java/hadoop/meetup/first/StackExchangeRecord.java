@@ -4,8 +4,24 @@ public class StackExchangeRecord {
 	private String reputation = "";
 	private String state = "";
 	private boolean isHeader = false;
-
+    public StackExchangeRecord(){
+    	
+    }
 	public StackExchangeRecord(String line) {
+		this.parse(line);
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public String getReputation() {
+		return reputation;
+	}
+	public boolean isHeader() {
+		return isHeader;
+	}
+	public void parse(String line){
 		String[] lineSplitted = line.toString().split(";");
 		if (lineSplitted.length > 1) {
 			String location = lineSplitted[1].toUpperCase();
@@ -19,17 +35,6 @@ public class StackExchangeRecord {
 		} else {
 			isHeader = true;
 		}
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public String getReputation() {
-		return reputation;
-	}
-	public boolean isHeader() {
-		return isHeader;
 	}
 	
 }
