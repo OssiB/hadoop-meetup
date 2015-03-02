@@ -195,9 +195,16 @@ it gives us some kind of approximation of sale time. If we have for example 400 
 we know that row with order 126, sale time is about Now- (365-(126/400)*365).
 #### Move data to the Hadoop ecosystem
 Previous meeting we used MapReduce program and Hadoop command line utilities in storing data. Now we are going
-to use [Kite SDK] tool. Kite is a high-level data layer for Hadoop.You can download [Kite SDK] using commands
+to use [Kite SDK] tool. Kite is a high-level data layer for Hadoop. You can download [Kite SDK] using commands
 ```sh
 curl http://central.maven.org/maven2/org/kitesdk/kite-tools/1.0.0/kite-tools-1.0.0-binary.jar -o kite-dataset
 chmod +x kite-dataset
 ```
-
+Copy few lines from ```houseprices.csv``` and make  a new file ```houseprices_schema.csv``` . Modify file 
+inserting header row. File content should be 
+```txt
+"location";"rooms";"type";"squares";"price";"square_price";"build_year";"flat";"elevator";"condition";"city";"order"
+"Alppila";"1h+kk";"kt";"29,00";"167000";"5759";"1960";"4/8";"on";"tyyd.";"Helsinki";"0"
+"Kannelmäki";"1 h, kk";"kt";"34,50";"121000";"3507";"1977";"4/4";"ei";"tyyd.";"Helsinki";"1"
+"Kallio";"1H+KK";"kt";"22,00";"160000";"7273";"1938";"4/6";"on";"hyvä";"Helsinki";"2"
+```
