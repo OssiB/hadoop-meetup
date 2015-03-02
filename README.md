@@ -212,7 +212,11 @@ Run command
 ```sh
 kite-dataset csv-schema  house_price_schema.csv  --class HousePrice -o houseprice.avsc --delimiter ";"
 ```
-Now you have schema. Verify previous argument
-```
+Now you have a schema. Verify previous argument
+```sh
 cat houseprice.avsc
+```
+.. with schema we can create dataset
+```sh
+kite-dataset create houseprices -s houseprice.avsc
 ```
