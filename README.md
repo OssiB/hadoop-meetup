@@ -133,8 +133,8 @@ $ hadoop fs -cat wfoutput/part_*
 ```
 second meetup
 =============
-### Introduction 
-We use 
+### Open data
+
 
 
 
