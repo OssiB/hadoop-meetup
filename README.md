@@ -231,3 +231,15 @@ hive>show tables;
  OK
  houseprices
 ```
+If you run query
+```sql
+hive>select count(*) from houseprises;
+```
+result will be 0 so we have to insert data 
+```
+kite-dataset csv-import datasets/houseprice.csv houseprices  --delimiter ";"
+```
+Kite SDK will show first ten rows 
+```sh
+$kite-dataset show sandwiches
+```
