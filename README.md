@@ -36,6 +36,7 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [jsoup]:[jsoup.org]
 [jquery]:[jquery.org]
 [Kite SDK]:[http://kitesdk.org/docs/current/]
+[Avro]:[http://avro.apache.org/docs/1.7.7/gettingstartedjava.html]
 
 
 ### How to run MapReduce program in Eclipse
@@ -212,11 +213,22 @@ Run command
 ```sh
 kite-dataset csv-schema  house_price_schema.csv  --class HousePrice -o houseprice.avsc --delimiter ";"
 ```
-Now you have a schema. Verify previous argument
+Now you have a schema,to be precise an [Avro] schema. Verify previous argument
 ```sh
 cat houseprice.avsc
 ```
 .. with schema we can create dataset
 ```sh
 kite-dataset create houseprices -s houseprice.avsc
+```
+```sh
+kite-dataset schema houseprices
+```
+Now we created table inside ```hive```. You can verify it running command
+```sh
+$hive
+hive>show tables;
+hive> show tables;                     
+OK
+houseprices
 ```
