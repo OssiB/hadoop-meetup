@@ -243,3 +243,31 @@ Kite SDK will show first ten rows
 ```sh
 $kite-dataset show houseprices
 ```
+#### Move data to Elasticsearch
+Elasticsearch is a search server based on Lucene. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface. 
+##### Installation
+Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extract the downloade file and run command
+```sh
+$ bin/elasticsearch -d
+```
+ElasticSearch is now running and can access it at ```http://localhost:9200`` on your web browser, which returns
+this:
+```json
+{
+  "status" : 200,
+  "name" : "Dr. Marla Jameson",
+  "cluster_name" : "elasticsearch",
+  "version" : {
+    "number" : "1.4.4",
+    "build_hash" : "c88f77ffc81301dfa9dfd81ca2232f09588bd512",
+    "build_timestamp" : "2015-02-19T13:05:36Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.10.3"
+  },
+  "tagline" : "You Know, for Search"
+}
+
+```
+
+
+
