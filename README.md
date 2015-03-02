@@ -224,7 +224,7 @@ kite-dataset create houseprices -s houseprice.avsc
 ```sh
 kite-dataset schema houseprices
 ```
-Now we created table inside ```hive```. You can verify it running command
+Now we have created table inside ```hive```. You can verify it running command
 ```sh
 $hive
 hive>show tables;
