@@ -228,7 +228,6 @@ Now we have created table inside ```hive```. You can verify it running command
 ```sh
 $hive
 hive>show tables;
-hive> show tables;                     
-OK
-houseprices
+ OK
+ houseprices
 ```
