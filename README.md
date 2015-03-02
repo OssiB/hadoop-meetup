@@ -29,6 +29,7 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
 [Virtualbox]:https://www.virtualbox.org/wiki/Downloads
 [StackExchange Data Explorer]:http://data.stackexchange.com/
+[asuntojen hintatiedot]:http://asuntojen.hintatiedot.fi
 [Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
 [query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
 
@@ -133,7 +134,9 @@ $ hadoop fs -cat wfoutput/part_*
 ```
 second meetup
 =============
-### Open data
+### Open data 
+At first meetup we downloaded the data using command line tools  and  R. It was quite easy because because response
+from request was well formatted csv file. Now we will download the data from  page [asuntojen hintatiedot]. 
 
 
 
