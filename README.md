@@ -34,6 +34,7 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
 [Palauta alkuperäinen järjestys]:[asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1]
 [jsoup]:[jsoup.org]
+[jquery]:[jquery.org]
 
 
 ### How to run MapReduce program in Eclipse
@@ -153,7 +154,10 @@ http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
 ```
 
 #### Parsing data
-We will use [jsoup] library to parse data.
+We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Following code grap all ```tr````elements from document
+```java
+Elements rows = doc.select("tr");
+```
 
 
 
