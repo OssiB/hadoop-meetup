@@ -154,10 +154,19 @@ http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
 ```
 
 #### Parsing data
-We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Following code graps all the  ```tr````elements from document
+We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Following code graps all the  ```tr```elements from document
 ```java
 Elements rows = doc.select("tr");
 ```
+We select rows which have at least ten child elements. Also we do not want include data header row
+```java
+for (Element row : rows) {
+						if (row.children().size() > 10) {
+							Elements tableData = row.children();
+							String kaupunginosa = tableData.get(0).text();
+							if (!kaupunginosa.startsWith("Kaupunginosa")) {.....
+```
+
 
 
 
