@@ -194,7 +194,7 @@ Last two columns ```city,order``are inserted during parsing. We included ``òrde
 it gives us some kind of approximation of sale time. If we have for example 400 hundred sale events
 we know that row with order 126, sale time is about Now- (365-(126/400)*365).
 #### Move data to the Hadoop ecosystem
-Previous meeting we used MapReduce program and Hadoop command line utilities in storing data. Now we are going
+At previous meeting we used MapReduce program and Hadoop command line utilities in storing data. Now we are going
 to use [Kite SDK] tool. Kite is a high-level data layer for Hadoop. You can download [Kite SDK] using commands
 ```sh
 curl http://central.maven.org/maven2/org/kitesdk/kite-tools/1.0.0/kite-tools-1.0.0-binary.jar -o kite-dataset
