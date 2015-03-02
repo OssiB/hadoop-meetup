@@ -131,7 +131,8 @@ If  job shows SUCCESS status check job output with command
 ```sh
 $ hadoop fs -cat wfoutput/part_*
 ```
-Congratulations.
+second meetup
+=============
 
 
 
