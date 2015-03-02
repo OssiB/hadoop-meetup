@@ -154,7 +154,7 @@ http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
 ```
 
 #### Parsing data
-We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Following code grap all ```tr````elements from document
+We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Following code graps all the  ```tr````elements from document
 ```java
 Elements rows = doc.select("tr");
 ```
