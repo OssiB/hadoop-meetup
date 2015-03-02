@@ -44,7 +44,7 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 Open a terminal
 ```sh
 $ git clone https://github.com/OssiB/hadoop-meetup.git
-$ cd hadoop-meetup
+$ cd hadoop-meetup 
 $ mvn eclipse:eclipse
 ```
 Import generated eclipse project into your Eclipse workspace.
