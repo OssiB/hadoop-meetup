@@ -158,13 +158,13 @@ We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Fol
 ```java
 Elements rows = doc.select("tr");
 ```
-We select rows which have at least ten child elements. Also we do not want include data header row
+We select rows which have at least ten child elements. Also we want to exclude data header row ..
 ```java
 for (Element row : rows) {
-						if (row.children().size() > 10) {
-							Elements tableData = row.children();
-							String kaupunginosa = tableData.get(0).text();
-							if (!kaupunginosa.startsWith("Kaupunginosa")) {.....
+	if (row.children().size() > 10) {
+		Elements tableData = row.children();
+		String kaupunginosa = tableData.get(0).text();
+		if (!kaupunginosa.startsWith("Kaupunginosa")) {....
 ```
 
 
