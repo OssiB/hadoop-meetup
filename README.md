@@ -246,11 +246,11 @@ $kite-dataset show houseprices
 #### Move data to Elasticsearch
 Elasticsearch is a search server based on Lucene. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface. 
 ##### Installation
-Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extract the downloade file and run command
+Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extract the downloaded file and run command
 ```sh
 $ bin/elasticsearch -d
 ```
-ElasticSearch is now running and can access it at ```http://localhost:9200`` on your web browser, which returns
+Elasticsearch is now running and you can access it at ```http://localhost:9200`` on your web browser, which returns
 this:
 ```json
 {
@@ -266,8 +266,7 @@ this:
   },
   "tagline" : "You Know, for Search"
 }
-
 ```
-
+We use Logtash ti
 
 
