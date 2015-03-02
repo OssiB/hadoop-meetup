@@ -162,7 +162,15 @@ http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
             moveToNextResultPage
                 parseData
  ```
-            
+We collect data from following cities Helsinki,Espoo,Vantaa,Tampere. But it would possible to collect data 
+from all cities using request ```http://asuntojen.hintatiedot.fi/haku/searchForm/fetchCities?lang=fi_FI```.
+Respond will be json format
+```json
+{
+cities: "[Akaa, Alajärvi, Alavieska, Alavus, Asikkala, Askola, Aura, Enonkoski, Espoo, Eura, Eurajoki, Forssa, Haapajärvi, Haapavesi, Hailuoto, Hamina, Hankasalmi, Hanko, Harjavalta, Hattula, Hausjärvi, Heinola, Heinävesi, Helsinki, Hirvensalmi,....
+```
+
+### Selecting data            
 We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax so we can  grap all the  ```tr``` elements using code
 ```java
 Elements rows = doc.select("tr");
