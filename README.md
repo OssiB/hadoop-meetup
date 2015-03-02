@@ -152,9 +152,18 @@ But there are still too many  results for single page, so  we have to add page i
 ```
 http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
 ```
-
+ 
 #### Parsing data
-We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax. Following code graps all the  ```tr```elements from document
+##### Pseudocode 
+```java
+   for each city 
+      for room_size in [1..4]
+         while(!hasMore) 
+            moveToNextResultPage
+                parseData
+ ```
+            
+We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax so we can  grap all the  ```tr``` elements using code
 ```java
 Elements rows = doc.select("tr");
 ```
