@@ -136,14 +136,17 @@ $ hadoop fs -cat wfoutput/part_*
 second meetup
 =============
 ### Open data 
-At first meetup we downloaded the data using command line tools  and  R. It was quite easy because because response
+At first meetup we downloaded the data using command line tools  and  R. It was quite easy  because response
 from request was well formatted csv file. Now we will download the data from  page [asuntojen hintatiedot]. Data or
-web interface to house price information is provided by Ministry of Enviroment and it was one of the first organisations who made data available for every one. One can make queries using for example city,postal code,room size as a parameter. If one  runs query with parameter Helsinki it will show results starting with houses which has room  size 1. By deafault search results are arranged by the time of sale. We can sort results also by price,build year etc. After  clicking Rv header  results are sorted by build year. Now we copy link  [Palauta alkuperäinen järjestys] and we have starting point for our 
+web interface to house price information is provided by Ministry of Enviroment and it was one of the first organisations who made data available for every one. One can make queries using for example city,postal code,room size as a parameter. If one  runs query with parameter Helsinki it will show results starting with houses which has room  size 1. By default search results are arranged by the time of sale. We also can sort results also by price,build year etc. After  clicking Rv header  results are sorted by build year. Now we copy link  [Palauta alkuperäinen järjestys] and we have starting point for our data scraping.
 ```
 http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1
 ```
-
-
+If we want only apartments with 2 rooms inside Helsinki  url would be
+```
+http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2
+```
+#### 
 
 
 
