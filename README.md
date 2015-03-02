@@ -32,7 +32,7 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [asuntojen hintatiedot]:http://asuntojen.hintatiedot.fi
 [Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
 [query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
-[Palauta alkuperäinen järjestys][http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1]
+[Palauta alkuperäinen järjestys]:[asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1]
 
 
 ### How to run MapReduce program in Eclipse
@@ -146,6 +146,7 @@ If we want only apartments with 2 rooms inside Helsinki  url would be
 ```
 http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2
 ```
+
 #### 
 
 
