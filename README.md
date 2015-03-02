@@ -241,5 +241,5 @@ kite-dataset csv-import datasets/houseprice.csv houseprices  --delimiter ";"
 ```
 Kite SDK will show first ten rows 
 ```sh
-$kite-dataset show sandwiches
+$kite-dataset show houseprices
 ```
