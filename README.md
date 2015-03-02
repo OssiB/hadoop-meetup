@@ -140,17 +140,17 @@ $ hadoop fs -cat wfoutput/part_*
 second meetup
 =============
 ### Open data 
-At first meetup we downloaded the data using command line tools  and  R. It was quite easy  because response
-from request was well formatted csv file. Now we will download the data from  page [asuntojen hintatiedot]. Data or
-web interface to house price information is provided by Ministry of Enviroment and it was one of the first organisations who made data available for every one. One can make queries using for example city,postal code,room size as a parameter. If one  runs query with parameter Helsinki it will show results starting with houses which has room  size 1. By default search results are arranged by the time of sale. We also can sort results also by price,build year etc. After  clicking Rv header  results are sorted by build year. Now we copy link  [Palauta alkuperäinen järjestys] and we have  a starting point for our data scraping.
+At our first meetup we downloaded the data using command line tools  and  R. It was quite easy  because the response
+for the  request was a well formatted csv file. At our next meeting we  will download  data from    [asuntojen hintatiedot]. 
+The web interface for the house price information is provided by the Ministry of Enviroment which was one of the first organisations making it's data available for every one. Users can make queries related to, for example, city, postal code or room size. For example, if one runs a query with the parameter "Helsinki", the results will be shown arranged by the time of sale. The results can also be sorted by price, building year etc. After clicking Rv header, the results are sorted by the building year. After this we copy the link [Palauta alkuperäinen järjestys] and we have a starting point for our data scraping.
 ```
 http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1
 ```
-If we want only apartments with 2 rooms inside Helsinki  url would be
+If we want only apartments with 2 rooms inside Helsinki the url would be
 ```
 http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2
 ```
-But there are still too many  results for single page, so  we have to add page index to url
+But there are still too many results for a single page, so we have to add a page index to url
 ```
 http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
 ```
@@ -164,20 +164,20 @@ http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
             moveToNextResultPage
                 parseData
  ```
-We collect data from following cities Helsinki,Espoo,Vantaa,Tampere. But it would possible to collect data 
-from all cities using request ```http://asuntojen.hintatiedot.fi/haku/searchForm/fetchCities?lang=fi_FI```.
-Respond will be json format
+We will collect data from the following cities: Helsinki,Espoo,Vantaa,Tampere. It would anyhow be possible to collect data 
+from all cities using the request ```http://asuntojen.hintatiedot.fi/haku/searchForm/fetchCities?lang=fi_FI```.
+The respond will be in json format
 ```json
 {
 cities: "[Akaa, Alajärvi, Alavieska, Alavus, Asikkala, Askola, Aura, Enonkoski, Espoo, Eura, Eurajoki, Forssa, Haapajärvi, Haapavesi, Hailuoto, Hamina, Hankasalmi, Hanko, Harjavalta, Hattula, Hausjärvi, Heinola, Heinävesi, Helsinki, Hirvensalmi,....
 ```
 
 #### Selecting data            
-We will use [jsoup] library to parse data. [jsoup] has [jquery] like syntax so we can  grap all the  ```tr``` elements using code
+Next we will use [jsoup] library to parse data. [jsoup] has a similar syntax to [jquery so we can scrape all the  ```tr``` elements using code
 ```java
 Elements rows = doc.select("tr");
 ```
-We select rows which have at least ten child elements. Also we want to exclude data header row ..
+We will now select rows which have at least ten child elements. Also we want to exclude data header row ..
 ```java
 for (Element row : rows) {
 	if (row.children().size() > 10) {
@@ -191,17 +191,17 @@ If you run the program ```HousePrice```, it will produce file ```houseprice.csv`
 "Kannelmäki";"1 h, kk";"kt";"34,50";"121000";"3507";"1977";"4/4";"ei";"tyyd.";"Helsinki";"1"
 "Kallio";"1H+KK";"kt";"22,00";"160000";"7273";"1938";"4/6";"on";"hyvä";"Helsinki";"2"
 ```
-Last two columns ```city,order``are inserted during parsing. We included ``òrder``field because
-it gives us some kind of approximation of sale time. If we have for example 400 hundred sale events
-we know that row with order 126, sale time is about Now- (365-(126/400)*365).
+The last two columns ```city,order``are inserted during parsing. We included ``òrder``field because
+it gives us some kind of approximation of the sale  time. If we have for example 400 hundred sale events
+we know that the row with order 126, has a sale time of about Now- (365-(126/400)*365).
 #### Move data to the Hadoop ecosystem
-At previous meeting we used MapReduce program and Hadoop command line utilities in storing data. Now we are going
+At our previous meeting we used MapReduce program and Hadoop command line utilities in storing data. Now we are going
 to use [Kite SDK] tool. Kite is a high-level data layer for Hadoop. You can download [Kite SDK] using commands
 ```sh
 curl http://central.maven.org/maven2/org/kitesdk/kite-tools/1.0.0/kite-tools-1.0.0-binary.jar -o kite-dataset
 chmod +x kite-dataset
 ```
-Copy few lines from ```houseprices.csv``` and make  a new file ```houseprices_schema.csv``` . Modify file 
+Copy few lines from ```houseprices.csv``` and make  a new file ```houseprices_schema.csv``` . Modify the file 
 inserting header row. File content should be 
 ```txt
 "location";"rooms";"type";"squares";"price";"square_price";"build_year";"flat";"elevator";"condition";"city";"order"
@@ -224,7 +224,7 @@ kite-dataset create houseprices -s houseprice.avsc
 ```sh
 kite-dataset schema houseprices
 ```
-Now we have created table inside ```hive```. You can verify it running command
+Now we have created table inside ```hive```. You can verify it running the command
 ```sh
 $hive
 hive>show tables;
@@ -235,7 +235,7 @@ If you run query
 ```sql
 hive>select count(*) from houseprises;
 ```
-result will be 0 so we have to insert data 
+the result will be 0 so we have to insert data 
 ```
 kite-dataset csv-import datasets/houseprice.csv houseprices  --delimiter ";"
 ```
