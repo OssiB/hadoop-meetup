@@ -205,7 +205,7 @@ chmod +x kite-dataset
 Copy few lines from ```houseprices.csv``` and make  a new file ```houseprices_schema.csv``` . Modify the file 
 inserting header row. File content should be 
 ```txt
-"location";"rooms";"type";"squares";"price";"square_price";"build_year";"flat";"elevator";"condition";"city";"order"
+"location";"rooms";"type";"squares";"price";"square_price";"building_year";"flat";"elevator";"condition";"city";"order"
 "Alppila";"1h+kk";"kt";"29,00";"167000";"5759";"1960";"4/8";"on";"tyyd.";"Helsinki";"0"
 "Kannelmäki";"1 h, kk";"kt";"34,50";"121000";"3507";"1977";"4/4";"ei";"tyyd.";"Helsinki";"1"
 "Kallio";"1H+KK";"kt";"22,00";"160000";"7273";"1938";"4/6";"on";"hyvä";"Helsinki";"2"
@@ -269,10 +269,54 @@ this:
 }
 ```
 [Logtash]  is an open source tool for collecting, parsing, and storing logs for future use. We collect data
-from ```houseprice.csv```,convert it to ```json`` format and finally index it. 
-We create Logtash configuration file ```logtash_mutate.conf```which has three parts
+from ```houseprice.csv```,convert it to ```json``` format and finally index it. 
+We create Logtash configuration file ```logtash_mutate.conf``` which has three parts
 
 * input
 * filter
 * output
 
+Input
+
+```json
+input {  
+      file {
+          path => "/home/cloudera/datasets/houseprice.csv"
+          start_position => "beginning"
+      }
+}
+```
+Filter
+```json
+filter {  
+    csv {
+        columns => ["location", "number_of_rooms", "type","squares","price","price_per_square","building_year","flat","elevator","condition","city","order"]
+        separator => ";"
+    }
+    mutate {
+    convert => [ "price", "integer" ]
+    }
+    mutate {
+    convert => [ "building_year", "integer" ]
+    }
+    mutate {
+    convert => [ "order", "integer" ]
+    }
+    
+}
+```
+Output part
+```json
+output {  
+    elasticsearch {
+        action => "index"
+        host => "localhost"
+        index => "houseprice_numbers"
+        workers => 1
+    }
+    # stdout {
+    #     codec => rubydebug
+    # }
+}
+
+```
