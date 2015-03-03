@@ -317,3 +317,7 @@ output {
 }
 
 ```
+Open a terminal and run 
+```sh
+$>bin/logstash -f logtash_mutate.conf
+```
