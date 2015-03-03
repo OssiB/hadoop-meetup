@@ -39,6 +39,7 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [Avro]:[http://avro.apache.org/docs/1.7.7/gettingstartedjava.html]
 [Logtash]:[http://www.elasticsearch.org/overview/logstash]
 [Elasticsearch]:[http://www.elasticsearch.org]
+[Sense]:[https://github.com/bleskes/sense]
 
 ### How to run MapReduce program in Eclipse
 
@@ -321,3 +322,8 @@ Open a terminal and run
 ```sh
 $>bin/logstash -f logtash_mutate.conf
 ```
+Run the following query to find out how many sale events  has been in Helsinki
+```sh
+$>curl -XGET 'http://localhost:9200/houseprice_numbers/_count?q=city:Helsinki'
+```
+
