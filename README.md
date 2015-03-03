@@ -26,20 +26,7 @@ $ curl  http://data.stackexchange.com/stackoverflow/csv/329607?state={AZ,TX,IN,C
 $ hadoop fs -mkdir user/cloudera/input
 $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 ```
-[single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
-[Virtualbox]:https://www.virtualbox.org/wiki/Downloads
-[StackExchange Data Explorer]:http://data.stackexchange.com/
-[asuntojen hintatiedot]:http://asuntojen.hintatiedot.fi
-[Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
-[query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
-[Palauta alkuperäinen järjestys]:[asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1]
-[jsoup]:[jsoup.org]
-[jquery]:[jquery.org]
-[Kite SDK]:[http://kitesdk.org/docs/current/]
-[Avro]:[http://avro.apache.org/docs/1.7.7/gettingstartedjava.html]
-[Logtash]:[http://www.elasticsearch.org/overview/logstash]
-[Elasticsearch]:[http://www.elasticsearch.org]
-[Sense]:[https://github.com/bleskes/sense]
+
 
 ### How to run MapReduce program in Eclipse
 
@@ -326,4 +313,18 @@ Run the following query to find out how many sale events  has been in Helsinki
 ```sh
 $>curl -XGET 'http://localhost:9200/houseprice_numbers/_count?q=city:Helsinki'
 ```
+[single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
+[Virtualbox]:https://www.virtualbox.org/wiki/Downloads
+[StackExchange Data Explorer]:http://data.stackexchange.com/
+[asuntojen hintatiedot]:http://asuntojen.hintatiedot.fi
+[Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
+[query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
+[Palauta alkuperäinen järjestys]:[asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1]
+[jsoup]:[jsoup.org]
+[jquery]:[jquery.org]
+[Kite SDK]:[http://kitesdk.org/docs/current/]
+[Avro]:[http://avro.apache.org/docs/1.7.7/gettingstartedjava.html]
+[Logtash]:[http://www.elasticsearch.org/overview/logstash]
+[Elasticsearch]:[http://www.elasticsearch.org]
+[Sense]:[https://github.com/bleskes/sense]
 
