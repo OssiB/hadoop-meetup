@@ -278,7 +278,7 @@ We create Logtash configuration file ```logtash_mutate.conf``` which has three p
 
 Input
 
-```json
+```
 input {  
       file {
           path => "/home/cloudera/datasets/houseprice.csv"
@@ -287,7 +287,7 @@ input {
 }
 ```
 Filter
-```json
+```
 filter {  
     csv {
         columns => ["location", "number_of_rooms", "type","squares","price","price_per_square","building_year","flat","elevator","condition","city","order"]
@@ -306,7 +306,7 @@ filter {
 }
 ```
 Output part
-```json
+```
 output {  
     elasticsearch {
         action => "index"
@@ -314,9 +314,6 @@ output {
         index => "houseprice_numbers"
         workers => 1
     }
-    # stdout {
-    #     codec => rubydebug
-    # }
 }
 
 ```
