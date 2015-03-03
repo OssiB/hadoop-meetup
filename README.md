@@ -38,7 +38,7 @@ $ mvn eclipse:eclipse
 ```
 Import generated eclipse project into your Eclipse workspace.
 #### MapReduce testing with MRUnit
-Inside <code>/src/test/hadoop/meetup/first</code> directory there are test classes :
+Inside <code>/src/test/hadoop/meetup/first</code> directory there are test classes:
 ```java
 StateReputationMapperTest
 StateReputationReducerTest
@@ -64,7 +64,7 @@ input http://data.stackexchange.com/stackoverflow/csv/329607?state=  TX,CA
 ```
 Press F5 and you should  see files TX.csv,CA.csv  under ```input``` directory.
 Running  program ```MinimalMapReduceDriver``` shows what happens when you run MapReduce without
-setting mapper or reduce. Try to run programm with parameters
+setting mapper or reduce. Try to run the programme with parameters
 ```
 input output
 ```
@@ -162,7 +162,7 @@ cities: "[Akaa, Alajärvi, Alavieska, Alavus, Asikkala, Askola, Aura, Enonkoski,
 ```
 
 #### Selecting data            
-Next we will use [jsoup] library to parse data. [jsoup] has a similar syntax to [jquery so we can scrape all the  ```tr``` elements using code
+Next we will use [jsoup] library to parse data. [jsoup] has a similar syntax to [jquery] so we can scrape all the  ```tr``` elements using code
 ```java
 Elements rows = doc.select("tr");
 ```
@@ -228,11 +228,11 @@ the result will be 0 so we have to insert data
 ```
 kite-dataset csv-import datasets/houseprice.csv houseprices  --delimiter ";"
 ```
-Kite SDK will show first ten rows 
+Kite SDK will show the first ten rows 
 ```sh
 $kite-dataset show houseprices
 ```
-#### Move csv data to Elasticsearch using Logtash
+#### Move the csv data to Elasticsearch using Logtash
 [Elasticsearch] is a search server based on Lucene. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface. 
 ##### Installation
 Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extract the downloaded file and run command
@@ -240,7 +240,7 @@ Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extr
 $ bin/elasticsearch -d
 ```
 Elasticsearch is now running and you can access it at ```http://localhost:9200`` on your web browser, which returns
-this:
+the following:
 ```json
 {
   "status" : 200,
@@ -256,9 +256,9 @@ this:
   "tagline" : "You Know, for Search"
 }
 ```
-[Logtash]  is an open source tool for collecting, parsing, and storing logs for future use. We collect data
-from ```houseprice.csv```,convert it to ```json``` format and finally index it. 
-We create Logtash configuration file ```logtash_mutate.conf``` which has three parts
+[Logtash]  is an open source tool for collecting, parsing, and storing logs for future use. Collect the data
+from ```houseprice.csv```, convert it to ```json``` format and finally index it. 
+Create Logtash configuration file ```logtash_mutate.conf``` which has three parts
 
 * input
 * filter
@@ -309,7 +309,7 @@ Open a terminal and run
 ```sh
 $>bin/logstash -f logtash_mutate.conf
 ```
-Run the following query to find out how many sale events  has been in Helsinki
+Run the following query to find out how many sales events there have been in Helsinki
 ```sh
 $>curl -XGET 'http://localhost:9200/houseprice_numbers/_count?q=city:Helsinki'
 ```
