@@ -37,7 +37,8 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 [jquery]:[jquery.org]
 [Kite SDK]:[http://kitesdk.org/docs/current/]
 [Avro]:[http://avro.apache.org/docs/1.7.7/gettingstartedjava.html]
-
+[Logtash]:[http://www.elasticsearch.org/overview/logstash]
+[Elasticsearch]:[http://www.elasticsearch.org]
 
 ### How to run MapReduce program in Eclipse
 
@@ -243,8 +244,8 @@ Kite SDK will show first ten rows
 ```sh
 $kite-dataset show houseprices
 ```
-#### Move data to Elasticsearch
-Elasticsearch is a search server based on Lucene. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface. 
+#### Move csv data to Elasticsearch using Logtash
+[Elasticsearch] is a search server based on Lucene. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface. 
 ##### Installation
 Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extract the downloaded file and run command
 ```sh
@@ -267,6 +268,11 @@ this:
   "tagline" : "You Know, for Search"
 }
 ```
-We use Logtash ti
+[Logtash]  is an open source tool for collecting, parsing, and storing logs for future use. We collect data
+from ```houseprice.csv```,convert it to ```json`` format and finally index it. 
+We create Logtash configuration file ```logtash_mutate.conf```which has three parts
 
+* input
+* filter
+* output
 
