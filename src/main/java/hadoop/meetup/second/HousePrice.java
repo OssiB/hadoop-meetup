@@ -1,9 +1,7 @@
 package hadoop.meetup.second;
 
 import java.io.FileWriter;
-import java.net.URLEncoder;
 
-import org.apache.commons.httpclient.HttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,7 +16,7 @@ public class HousePrice {
 				.split(":");
 		String baseUrl = "http://asuntojen.hintatiedot.fi/haku/?search=1&cr=1";
 		String cityPart = "&c=";
-		CSVWriter writer = new CSVWriter(new FileWriter("houseprice.csv"), ';');
+		CSVWriter writer = new CSVWriter(new FileWriter("houseprice2015.csv"), ';');
 		boolean hasMore = true;
 		String next = "&z=";
 		String room = "&r=";
@@ -43,6 +41,7 @@ public class HousePrice {
 								hasMore = true;
 								String data = parse(tableData);
 								data += cities[cityIndex] + ";" + count++;
+								
 								writer.writeNext(data.toString().split(";"));
 							}
 
