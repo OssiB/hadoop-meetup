@@ -26,11 +26,6 @@ $ curl  http://data.stackexchange.com/stackoverflow/csv/329607?state={AZ,TX,IN,C
 $ hadoop fs -mkdir user/cloudera/input
 $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 ```
-[single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
-[Virtualbox]:https://www.virtualbox.org/wiki/Downloads
-[StackExchange Data Explorer]:http://data.stackexchange.com/
-[Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
-[query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
 
 
 ### How to run MapReduce program in Eclipse
@@ -38,12 +33,12 @@ $ hadoop fs -copyFromLocal states.csv /user/cloudera/input/
 Open a terminal
 ```sh
 $ git clone https://github.com/OssiB/hadoop-meetup.git
-$ cd hadoop-meetup
+$ cd hadoop-meetup 
 $ mvn eclipse:eclipse
 ```
 Import generated eclipse project into your Eclipse workspace.
 #### MapReduce testing with MRUnit
-Inside <code>/src/test/hadoop/meetup/first</code> directory there are test classes :
+Inside <code>/src/test/hadoop/meetup/first</code> directory there are test classes:
 ```java
 StateReputationMapperTest
 StateReputationReducerTest
@@ -69,7 +64,7 @@ input http://data.stackexchange.com/stackoverflow/csv/329607?state=  TX,CA
 ```
 Press F5 and you should  see files TX.csv,CA.csv  under ```input``` directory.
 Running  program ```MinimalMapReduceDriver``` shows what happens when you run MapReduce without
-setting mapper or reduce. Try to run programm with parameters
+setting mapper or reduce. Try to run the programme with parameters
 ```
 input output
 ```
@@ -131,9 +126,205 @@ If  job shows SUCCESS status check job output with command
 ```sh
 $ hadoop fs -cat wfoutput/part_*
 ```
-Congratulations.
+second meetup
+=============
+### Open data 
+At our first meetup we downloaded the data using command line tools  and  R. It was quite easy  because the response
+for the  request was a well formatted csv file. At our next meeting we  will download  data from    [asuntojen hintatiedot]. 
+The web interface for the house price information is provided by the Ministry of Enviroment which was one of the first organisations making it's data available for every one. Users can make queries related to, for example, city, postal code or room size. For example, if one runs a query with the parameter "Helsinki", the results will be shown arranged by the time of sale. The results can also be sorted by price, building year etc. After clicking Rv header, the results are sorted by the building year. After this we copy the link [Palauta alkuperäinen järjestys] and we have a starting point for our data scraping.
+```
+http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1
+```
+If we want only apartments with 2 rooms inside Helsinki the url would be
+```
+http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2
+```
+But there are still too many results for a single page, so we have to add a page index to url
+```
+http://asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1&r=2&z=1
+```
+ 
+#### Parsing data
+##### Pseudocode 
+```java
+   for each city 
+      for room_size in [1..4]
+         while(!hasMore) 
+            moveToNextResultPage
+                parseData
+ ```
+We will collect data from the following cities: Helsinki,Espoo,Vantaa,Tampere. It would anyhow be possible to collect data 
+from all cities using the request ```http://asuntojen.hintatiedot.fi/haku/searchForm/fetchCities?lang=fi_FI```.
+The respond will be in json format
+```json
+{
+cities: "[Akaa, Alajärvi, Alavieska, Alavus, Asikkala, Askola, Aura, Enonkoski, Espoo, Eura, Eurajoki, Forssa, Haapajärvi, Haapavesi, Hailuoto, Hamina, Hankasalmi, Hanko, Harjavalta, Hattula, Hausjärvi, Heinola, Heinävesi, Helsinki, Hirvensalmi,....
+```
 
+#### Selecting data            
+Next we will use [jsoup] library to parse data. [jsoup] has a similar syntax to [jquery] so we can scrape all the  ```tr``` elements using code
+```java
+Elements rows = doc.select("tr");
+```
+We will now select rows which have at least ten child elements. Also we want to exclude data header row ..
+```java
+for (Element row : rows) {
+	if (row.children().size() > 10) {
+		Elements tableData = row.children();
+		String kaupunginosa = tableData.get(0).text();
+		if (!kaupunginosa.startsWith("Kaupunginosa")) {....
+```
+If you run the program ```HousePrice```, it will produce file ```houseprice.csv```.
+```
+"Alppila";"1h+kk";"kt";"29,00";"167000";"5759";"1960";"4/8";"on";"tyyd.";"Helsinki";"0"
+"Kannelmäki";"1 h, kk";"kt";"34,50";"121000";"3507";"1977";"4/4";"ei";"tyyd.";"Helsinki";"1"
+"Kallio";"1H+KK";"kt";"22,00";"160000";"7273";"1938";"4/6";"on";"hyvä";"Helsinki";"2"
+```
+The last two columns ```city,order``are inserted during parsing. We included ``òrder``field because
+it gives us some kind of approximation of the sale  time. If we have for example 400 hundred sale events
+we know that the row with order 126, has a sale time of about Now- (365-(126/400)*365).
+#### Move data to the Hadoop ecosystem
+At our previous meeting we used MapReduce program and Hadoop command line utilities in storing data. Now we are going
+to use [Kite SDK] tool. Kite is a high-level data layer for Hadoop. You can download [Kite SDK] using commands
+```sh
+curl http://central.maven.org/maven2/org/kitesdk/kite-tools/1.0.0/kite-tools-1.0.0-binary.jar -o kite-dataset
+chmod +x kite-dataset
+```
+Copy few lines from ```houseprices.csv``` and make  a new file ```houseprices_schema.csv``` . Modify the file 
+inserting header row. File content should be 
+```txt
+"location";"rooms";"type";"squares";"price";"square_price";"building_year";"flat";"elevator";"condition";"city";"order"
+"Alppila";"1h+kk";"kt";"29,00";"167000";"5759";"1960";"4/8";"on";"tyyd.";"Helsinki";"0"
+"Kannelmäki";"1 h, kk";"kt";"34,50";"121000";"3507";"1977";"4/4";"ei";"tyyd.";"Helsinki";"1"
+"Kallio";"1H+KK";"kt";"22,00";"160000";"7273";"1938";"4/6";"on";"hyvä";"Helsinki";"2"
+```
+Run command
+```sh
+kite-dataset csv-schema  house_price_schema.csv  --class HousePrice -o houseprice.avsc --delimiter ";"
+```
+Now you have a schema,to be precise an [Avro] schema. Verify previous argument
+```sh
+cat houseprice.avsc
+```
+.. with schema we can create dataset
+```sh
+kite-dataset create houseprices -s houseprice.avsc
+```
+```sh
+kite-dataset schema houseprices
+```
+Now we have created table inside ```hive```. You can verify it running the command
+```sh
+$hive
+hive>show tables;
+ OK
+ houseprices
+```
+If you run query
+```sql
+hive>select count(*) from houseprises;
+```
+the result will be 0 so we have to insert data 
+```
+kite-dataset csv-import datasets/houseprice.csv houseprices  --delimiter ";"
+```
+Kite SDK will show the first ten rows 
+```sh
+$kite-dataset show houseprices
+```
+#### Move the csv data to Elasticsearch using Logtash
+[Elasticsearch] is a search server based on Lucene. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface. 
+##### Installation
+Download Elasticsearch zip file from http://www.elasticsearch.org/download. Extract the downloaded file and run command
+```sh
+$ bin/elasticsearch -d
+```
+Elasticsearch is now running and you can access it at ```http://localhost:9200`` on your web browser, which returns
+the following:
+```json
+{
+  "status" : 200,
+  "name" : "Dr. Marla Jameson",
+  "cluster_name" : "elasticsearch",
+  "version" : {
+    "number" : "1.4.4",
+    "build_hash" : "c88f77ffc81301dfa9dfd81ca2232f09588bd512",
+    "build_timestamp" : "2015-02-19T13:05:36Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.10.3"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+[Logtash]  is an open source tool for collecting, parsing, and storing logs for future use. Collect the data
+from ```houseprice.csv```, convert it to ```json``` format and finally index it. 
+Create Logtash configuration file ```logtash_mutate.conf``` which has three parts
 
+* input
+* filter
+* output
 
+Input
 
+```
+input {  
+      file {
+          path => "/home/cloudera/datasets/houseprice.csv"
+          start_position => "beginning"
+      }
+}
+```
+Filter
+```
+filter {  
+    csv {
+        columns => ["location", "number_of_rooms", "type","squares","price","price_per_square","building_year","flat","elevator","condition","city","order"]
+        separator => ";"
+    }
+    mutate {
+    convert => [ "price", "integer" ]
+    }
+    mutate {
+    convert => [ "building_year", "integer" ]
+    }
+    mutate {
+    convert => [ "order", "integer" ]
+    }
+    
+}
+```
+Output part
+```
+output {  
+    elasticsearch {
+        action => "index"
+        host => "localhost"
+        index => "houseprice_numbers"
+        workers => 1
+    }
+}
+
+```
+Open a terminal and run 
+```sh
+$>bin/logstash -f logtash_mutate.conf
+```
+Run the following query to find out how many sales events there have been in Helsinki
+```sh
+$>curl -XGET 'http://localhost:9200/houseprice_numbers/_count?q=city:Helsinki'
+```
+[single-node Hadoop Cluster]:http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html
+[Virtualbox]:https://www.virtualbox.org/wiki/Downloads
+[StackExchange Data Explorer]:http://data.stackexchange.com/
+[asuntojen hintatiedot]:http://asuntojen.hintatiedot.fi
+[Download CSV]:http://data.stackexchange.com/stackoverflow/csv/329607?state=CA
+[query]:http://data.stackexchange.com/stackoverflow/query/249571/state-query
+[Palauta alkuperäinen järjestys]:[asuntojen.hintatiedot.fi/haku/?c=Helsinki&cr=1&search=1]
+[jsoup]:[jsoup.org]
+[jquery]:[jquery.org]
+[Kite SDK]:[http://kitesdk.org/docs/current/]
+[Avro]:[http://avro.apache.org/docs/1.7.7/gettingstartedjava.html]
+[Logtash]:[http://www.elasticsearch.org/overview/logstash]
+[Elasticsearch]:[http://www.elasticsearch.org]
+[Sense]:[https://github.com/bleskes/sense]
 
