@@ -1,5 +1,5 @@
 vehicleCategory
-FirstRegistrationDate
+firstRegistrationDate
 vehicleGroup
 useOfVehicle
 variant
@@ -34,5 +34,5 @@ municipality
 Co2
 odometerReading
 area
-IdentificationNumber
+identificationNumber
 serialNumber
