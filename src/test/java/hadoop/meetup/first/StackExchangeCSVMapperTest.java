@@ -19,6 +19,7 @@ public class StackExchangeCSVMapperTest {
 	public void setUp(){
 		StackExchangeCSVMapper mapper = new StackExchangeCSVMapper();
 		mapDriver = MapDriver.newMapDriver(mapper);
+		
 	}
 	@Test
 	public void processValidRecord() throws IOException{

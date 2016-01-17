@@ -13,6 +13,7 @@ public class StateReputationReducerTest {
 	ReduceDriver<Text, IntWritable, Text, IntWritable> reduceDriver;
 	@Before
 	public void setUp(){
+		
 		StateReputationReducer reducer = new StateReputationReducer();
 		reduceDriver = ReduceDriver.newReduceDriver(reducer);
 	}

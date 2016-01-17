@@ -2,8 +2,6 @@ package hadoop.meetup.first;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -16,18 +14,19 @@ public class StackExchangeFilterDriver extends Configured implements Tool {
 
 	@Override
 	public int run(String[] args) throws Exception {
+		
 		if(args.length !=2){
 			System.err.printf("Usage: %s [generic options] <input> <output>\n",getClass().getSimpleName());
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
 		}
-		Job job = new Job(getConf(),"Filter states");
+		Job job = Job.getInstance(getConf(),"Filter states");
 		job.setJarByClass(getClass());
 		
 		FileInputFormat.addInputPath(job,new Path(args[0]));
 		FileOutputFormat.setOutputPath(job,new Path(args[1]));
 		
-		job.setMapperClass(FilterMapper.class);
+		job.setMapperClass(StackExchangeCSVMapper.class);
 		//job.setNumReduceTasks(0);
 		job.setNumReduceTasks(0);
 		job.setOutputKeyClass(NullWritable.class);

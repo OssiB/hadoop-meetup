@@ -16,6 +16,7 @@ public class GetData {
 		String states[] = args[2].split(",");
 		for (int i = 0; i < states.length; i++) {
 			URL url = new URL(args[1] + states[i]);
+			System.out.println("Downloading :"+states[i]);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.connect();
 			InputStream connStream = conn.getInputStream();
