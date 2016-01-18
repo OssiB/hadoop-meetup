@@ -17,7 +17,7 @@ totaLengthOfVehicle
 widthVehicle
 vehicleHeight
 power
-displacement
+cylinderCapacity
 maximumNetPower
 numberOfCylinders
 brace
@@ -28,8 +28,8 @@ gearing
 numberOfGears
 commercialName
 powerTransmission
-typeApproval number
-IndividualPropulsion
+typeApprovalNumber
+individualPropulsion
 municipality
 Co2
 odometerReading
