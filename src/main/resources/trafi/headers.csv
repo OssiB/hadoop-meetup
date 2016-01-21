@@ -10,7 +10,7 @@ numberOfDoors
 typeOfBodywork
 cabType
 numberOfSeatingPositions
-unladenMass
+weight
 technicalMaximumPermissibleLadenMass
 roadTransportMaxPermLadenMass
 totaLengthOfVehicle
