@@ -1,0 +1,40 @@
+=============================================================
+Analyzing Trafi Data with Apache Spark,Zeppelin and d3.js 
+=============================================================
+
+We will continue our big data journey with hands-on workshop.
+Workshop will cover a basic workflow from the raw data to valuable
+information using the tools mentioned in invitation. 
+ 
+Our final goal is to calculate approximation of passenger cars carboon emissions per town
+and visualize it with choropleth
+Calculation is based on population size, odeometer readings and cars emisssions.
+
+Techinal requirements 
+  -java >=1.7
+  -mvn 3.3
+  -spark 1.5.1
+  -scala 2.10.4
+  -git
+  -Apache zeppelin
+  -server (node http-server)
+
+Agenda
+
+1. Download trafi data
+2. Loading data using spark-csv library
+3. Data filtering
+4. Quality checks
+5. Basic statistics
+6. Queries using SQL syntax
+7. How to visualize data  and make dynamic queries inside Zeppelin notebook
+8. Parquet files: save and open
+9. Data joins using dataframes
+10.Spark Window functions
+11.Export data
+12. How to make some basic charts with d3.js
+13. gdal,topojson
+
+
+
+

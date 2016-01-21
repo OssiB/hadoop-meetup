@@ -1,0 +1,38 @@
+vehicle category
+First registration date
+vehicle group
+The use of the vehicle
+variant
+version
+date of entry
+color
+number of doors
+the type of bodywork
+cab type
+number of seating positions
+unladen mass
+Technical maximum permissible laden mass
+road transport maximum permissible laden mass
+The total length of the vehicle
+width of the vehicle
+vehicle height
+power
+displacement
+the maximum net power
+number of cylinders
+brace
+electric cars
+brand of the car a plaintext
+model designation
+gearing
+the number of gears
+commercial name
+power transmission and efficiency improvement method
+type approval number
+Individual propulsion
+municipality
+Co2
+odometer reading
+area
+Identification Number
+the serial number
